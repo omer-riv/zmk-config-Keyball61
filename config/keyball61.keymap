@@ -24,6 +24,10 @@
 };
 
 / {
+    chosen {
+        zephyr,console = &cdc_acm_uart;
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -105,4 +109,13 @@
             >;
         };
     };
+};
+
+// Allow USB logging
+&usbd {
+	status = "okay";
+	cdc_acm_uart: cdc_acm_uart {
+		compatible = "zephyr,cdc-acm-uart";
+		label = "CDC_ACM_0";
+	};
 };
